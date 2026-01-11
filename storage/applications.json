@@ -1,0 +1,13 @@
+[
+  {
+    "id": "2152d0eb-19e7-4d96-b40b-68adb6979469",
+    "name": "Test User",
+    "email": "test@example.com",
+    "cvOriginalName": "test_cv.pdf",
+    "cvStoredName": "1767025602-2152d0eb-19e7-4d96-b40b-68adb6979469-test_cv.pdf",
+    "cvMimeType": "application/pdf",
+    "cvSize": 496,
+    "appliedAt": "2025-12-29T16:26:42Z",
+    "ip": "[::1]"
+  }
+]
