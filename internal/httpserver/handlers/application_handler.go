@@ -4,9 +4,11 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -357,18 +359,18 @@ func (h *ApplicationHandler) AdminGetCV(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 	path := filepath.Join(h.storage, filename)
-	f, err := os.Open(path)
-	if err != nil {
+	if _, err := os.Stat(path); err != nil {
 		http.NotFound(w, r)
 		return
 	}
-	defer f.Close()
-	fi, _ := f.Stat()
 
-	// Content-Disposition safe filename fallback
+	// RFC 6266-compatible filename handling for binary downloads.
 	dispName := strings.ReplaceAll(a.CVOriginalName, "\"", "'")
 	w.Header().Set("Content-Type", a.CVMimeType)
-	w.Header().Set("Content-Disposition", "attachment; filename=\""+dispName+"\"")
-	w.Header().Set("Content-Length", strconv.FormatInt(fi.Size(), 10))
-	http.ServeContent(w, r, a.CVOriginalName, time.Time{}, f)
+	w.Header().Set("X-Content-Type-Options", "nosniff")
+	w.Header().Set(
+		"Content-Disposition",
+		fmt.Sprintf("attachment; filename=\"%s\"; filename*=UTF-8''%s", dispName, url.PathEscape(a.CVOriginalName)),
+	)
+	http.ServeFile(w, r, path)
 }
