@@ -42,7 +42,7 @@ func NewRouter(cfg config.Config, blog *services.BlogService, product *services.
 	if base == "" {
 		base = "http://localhost:" + itoa(cfg.Port)
 	}
-	uploadH := handlers.NewUploadHandler(base)
+	uploadH := handlers.NewUploadHandler(base, "uploads", 20<<20)
 	r.Post("/api/upload", uploadH.Upload)
 
 	// applications
