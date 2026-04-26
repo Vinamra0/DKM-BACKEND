@@ -42,5 +42,33 @@
     "cvSize": 464,
     "appliedAt": "2026-04-19T00:43:04Z",
     "ip": "[::1]"
+  },
+  {
+    "id": "d8f7abf6-c286-44c1-bf25-a3fa407bcf1b",
+    "name": "Demo Candidate",
+    "email": "demo@example.com",
+    "phone": "9999999999",
+    "education": "BPharm",
+    "experience": "2 years",
+    "location": "Delhi",
+    "coverLetter": "Demo submission",
+    "jobId": "demo-job",
+    "cvOriginalName": "demo-cv.pdf",
+    "cvStoredName": "1776603634-d8f7abf6-c286-44c1-bf25-a3fa407bcf1b-demo-cv.pdf",
+    "cvMimeType": "application/pdf",
+    "cvSize": 45,
+    "appliedAt": "2026-04-19T13:00:34Z",
+    "ip": "[::1]"
+  },
+  {
+    "id": "2f09425a-b701-441d-b1cb-d6fdad18007a",
+    "name": "A",
+    "email": "b@c.com",
+    "cvOriginalName": "demo-cv.pdf",
+    "cvStoredName": "1776603634-2f09425a-b701-441d-b1cb-d6fdad18007a-demo-cv.pdf",
+    "cvMimeType": "application/pdf",
+    "cvSize": 45,
+    "appliedAt": "2026-04-19T13:00:34Z",
+    "ip": "[::1]"
   }
 ]

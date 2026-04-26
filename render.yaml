@@ -1,0 +1,31 @@
+# render.yaml — Render Blueprint for DKM Backend
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: dkm-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    # Render injects PORT automatically; the Go server reads it.
+    # Free tier spins down after 15 min of inactivity.
+    plan: free
+    envVars:
+      - key: MONGO_URI
+        sync: false          # fill in Render dashboard or via render CLI
+      - key: MONGO_DB
+        value: dkm_pharma
+      - key: JWT_SECRET
+        generateValue: true  # Render generates a random secret once
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_NAME
+        sync: false
+      # Set to your Vercel frontend URL after first deploy, e.g.:
+      # https://dkm-pharma.vercel.app
+      - key: ALLOWED_ORIGINS
+        sync: false
+      # Public URL of this Render service — used to build file download URLs.
+      # e.g. https://dkm-backend.onrender.com
+      - key: BACKEND_URL
+        sync: false

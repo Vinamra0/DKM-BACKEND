@@ -1,0 +1,16 @@
+# Git ignored files
+.git
+.gitignore
+
+# Local env files
+.env
+.env.*
+
+# Sample / test data
+sample_files/
+
+# Binaries already committed (build happens inside Docker)
+bin/
+
+# Test caches
+**/*_test.go
