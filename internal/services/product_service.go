@@ -19,6 +19,9 @@ func NewProductService(r repository.ProductRepository) *ProductService {
 
 // validateProductFields checks that required specification fields are not empty
 func validateProductFields(p *models.Product) error {
+	if strings.TrimSpace(p.Image) == "" {
+		return errors.New("image is required and cannot be empty")
+	}
 	if strings.TrimSpace(p.Composition) == "" {
 		return errors.New("composition is required and cannot be empty")
 	}
